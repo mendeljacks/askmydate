@@ -12,6 +12,13 @@ const IntroPage = observer(() => {
             <br />
         For singles and couples of all ages!</h4>
         <Button variant='contained' color='inherit' onClick={() => main_store.begin()}>Begin</Button>
+
+        <br />
+        <h4>
+            For more of Toby Lieder's dating and marriage insights visit:
+            <br />
+            <a style={{color: 'lightgray'}} href='https://tobydatingcoach.com'>tobydatingcoach.com</a>
+        </h4>
     </center>
 })
 
