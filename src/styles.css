@@ -19,6 +19,7 @@ h4{
 }
 .container {
 	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	font-size: 20px;
 	width: 50vh;
 	height: 50vh;
 	overflow: auto;
