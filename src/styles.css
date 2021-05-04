@@ -1,0 +1,29 @@
+body{
+	background: #1E405B;	
+	font-family: 'Open Sans', sans-serif;	
+	display: grid;
+	place-items: center;
+}
+h1{
+	font-weight: lighter;
+	font-size: 40px;
+	color: #fff;	
+	margin-bottom:15px;
+}
+h4{
+	font-weight: lighter;
+	font-size: 18px;
+	color: rgba(255,255,255,0.5);
+	margin-top:0px;
+	margin-bottom:30px;
+}
+.container {
+	font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+	width: 50vh;
+	height: 50vh;
+	overflow: auto;
+	background-color: lightgray;
+	border-radius: 10px;
+	display: grid;
+	place-items: center;
+}
