@@ -1,7 +1,7 @@
 import {observer} from 'mobx-react-lite'
 import {useEffect} from 'react'
 import {main_store} from './main_store'
-import {Button} from '@material-ui/core'
+import {Button, Switch} from '@material-ui/core'
 import './styles.css'
 
 const IntroPage = observer(() => {
@@ -18,9 +18,9 @@ const IntroPage = observer(() => {
             <span style={{textDecoration: 'underline'}}>Toby Lieder</span>
             <br />
             Shadchan and Dating coach
-            <br/>
+            <br />
             <a style={{color: 'lightgray'}} href='https://tobydatingcoach.com'>tobydatingcoach.com</a>
-            <br/>
+            <br />
             tobylieder@gmail.com
         </h4>
     </center>
@@ -42,7 +42,16 @@ const QuestionsPage = observer(() => {
                 style={{borderRadius: '20px', height: '80px', width: '100px'}}
                 disabled={main_store.question_index === 0} onClick={() => main_store.back()}
                 variant="contained" color="primary">Back</Button>
-            <span style={{color: 'lightgray'}}>{main_store.question_index + 1} / {main_store.question_count}</span>
+            <span style={{color: 'lightgray', display: 'grid', placeItems: 'center'}}>
+                <span>{main_store.question_index + 1} / {main_store.question_count}</span>
+                <div style={{display: 'grid', placeItems: 'center', gridTemplateColumns: '1fr 1fr'}}>
+                    <span>Random</span>
+                    <Switch
+                        checked={main_store.random_mode}
+                        onChange={() => main_store.toggle_random_mode()}
+                    />
+                </div>
+            </span>
             <Button
                 style={{borderRadius: '20px', height: '80px', width: '100px'}}
                 disabled={main_store.question_index === main_store.question_count - 1} onClick={() => main_store.next()}
