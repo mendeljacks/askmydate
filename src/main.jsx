@@ -14,10 +14,14 @@ const IntroPage = observer(() => {
         <Button variant='contained' color='inherit' onClick={() => main_store.begin()}>Begin</Button>
 
         <br />
-        <h4>
-            For more of Toby Lieder's dating and marriage insights visit:
+        <h4 style={{textAlign: 'left'}}>
+            <span style={{textDecoration: 'underline'}}>Toby Lieder</span>
             <br />
+            Shadchan and Dating coach
+            <br/>
             <a style={{color: 'lightgray'}} href='https://tobydatingcoach.com'>tobydatingcoach.com</a>
+            <br/>
+            tobylieder@gmail.com
         </h4>
     </center>
 })

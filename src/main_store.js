@@ -1,5 +1,5 @@
 import axios from 'axios'
-import {makeAutoObservable} from 'mobx'
+import {makeAutoObservable, runInAction} from 'mobx'
 
 class MainStore {
     constructor() {
@@ -16,7 +16,9 @@ class MainStore {
 
     fetch_questions = async () => {
         const response = await axios.get('https://spreadsheets.google.com/feeds/list/1hqVAmY7fvhTZnmrqhLHps_hXe6fI9wjc1rOJsDEhq3s/od6/public/values?alt=json')
-        this.sheet = response.data
+        runInAction(() => {
+            this.sheet = response.data
+        })
     }
 
     next = () => {
