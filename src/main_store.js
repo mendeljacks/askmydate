@@ -1,30 +1,31 @@
 import axios from 'axios'
-import {makeAutoObservable, runInAction} from 'mobx'
+import { makeAutoObservable, runInAction } from 'mobx'
 const random = (min, max) => Math.floor(Math.random() * (max - min)) + min
 class MainStore {
     constructor() {
         makeAutoObservable(this)
     }
 
-    sheet = {}
+    questions = []
     question_index = 0
     started = false
     random_mode = false
 
-    get question_count() {
-        return this.sheet?.feed?.entry?.length - 1
-    }
-
     fetch_questions = async () => {
-        const response = await axios.get('https://spreadsheets.google.com/feeds/list/1hqVAmY7fvhTZnmrqhLHps_hXe6fI9wjc1rOJsDEhq3s/od6/public/values?alt=json')
+        const spreadsheet_id = '1hqVAmY7fvhTZnmrqhLHps_hXe6fI9wjc1rOJsDEhq3s'
+        const sheet_name = 'Sheet1'
+        const ky = 'AIzaSyD0P7fn'
+        const ky2 = '7s4n685KG1xCoeI8ikLnQhCs84'
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${spreadsheet_id}/values/${sheet_name}?key=${ky}-${ky2}`
+        const response = await axios.get(url).catch(console.error)
         runInAction(() => {
-            this.sheet = response.data
+            this.questions = response.data.values.slice(1).map(el => el[0])
         })
     }
 
     next = () => {
         if (this.random_mode) {
-            this.question_index = random(0, this.question_count - 1)
+            this.question_index = random(0, this.questions.length - 1)
         } else {
             this.question_index++
         }
@@ -43,4 +44,4 @@ class MainStore {
     }
 }
 
-export const main_store = window.main_store = new MainStore()
+export const main_store = (window.main_store = new MainStore())
