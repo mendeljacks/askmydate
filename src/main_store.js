@@ -10,6 +10,7 @@ class MainStore {
     question_index = 0
     started = false
     random_mode = false
+    seen_questions_indexes = []
 
     fetch_questions = async () => {
         const spreadsheet_id = '1hqVAmY7fvhTZnmrqhLHps_hXe6fI9wjc1rOJsDEhq3s'
@@ -24,6 +25,8 @@ class MainStore {
     }
 
     next = () => {
+        this.seen_questions_indexes.push(this.question_index)
+
         if (this.random_mode) {
             this.question_index = random(0, this.questions.length - 1)
         } else {
@@ -32,7 +35,7 @@ class MainStore {
     }
 
     back = () => {
-        this.question_index--
+        this.question_index = this.seen_questions_indexes.pop()
     }
 
     begin = () => {
