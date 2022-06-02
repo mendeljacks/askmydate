@@ -40,7 +40,7 @@ const QuestionsPage = observer(() => {
         <div style={{display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', height: 'auto', placeItems: 'center', gap: '10px'}}>
             <Button
                 style={{borderRadius: '20px', height: '80px', width: '100px'}}
-                disabled={main_store.question_index === 0} onClick={() => main_store.back()}
+                disabled={main_store.seen_questions_indexes.length === 0} onClick={() => main_store.back()}
                 variant="contained" color="primary">Back</Button>
             <span style={{color: 'lightgray', display: 'grid', placeItems: 'center'}}>
                 <span>{main_store.question_index + 1} / {main_store.questions.length}</span>
